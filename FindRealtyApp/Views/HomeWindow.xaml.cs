@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FindRealtyApp.Stores;
+using FindRealtyApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +12,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FindRealtyApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
+    /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class HomeWindow : Window
     {
-        public UserControl1()
+        NavigationStore navigationStore = new NavigationStore();
+        public HomeWindow()
         {
+            DataContext = new HomeViewModel(navigationStore);
             InitializeComponent();
+           
         }
     }
 }

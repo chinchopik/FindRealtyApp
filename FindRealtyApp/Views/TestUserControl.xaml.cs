@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FindRealtyApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
+    /// Логика взаимодействия для TestUserControl.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class TestUserControl : UserControl
     {
-        public UserControl1()
+        public TestUserControl()
         {
             InitializeComponent();
         }
