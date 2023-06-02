@@ -57,6 +57,7 @@ namespace FindRealtyApp.ViewModel
                     Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                     HomeWindow homeWindow = new HomeWindow();
                     Application.Current.MainWindow.Close();
+
                     homeWindow.Show();
 
                 }

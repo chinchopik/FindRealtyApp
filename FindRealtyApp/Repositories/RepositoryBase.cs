@@ -9,8 +9,8 @@ namespace FindRealtyApp.Repositories
 {
     public abstract class RepositoryBase
     {
-        private readonly string _connectionString;
-        public RepositoryBase()
+        private static readonly string _connectionString;
+        static RepositoryBase()
         {
             _connectionString = "Data Source=KRUTYASH;Initial Catalog=EntireWorld;User ID=sa;Password=123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }

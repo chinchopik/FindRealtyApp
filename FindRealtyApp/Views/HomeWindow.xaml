@@ -5,19 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FindRealtyApp.Views"
         xmlns:vm="clr-namespace:FindRealtyApp.ViewModel"
-        xmlns:v="clr-namespace:FindRealtyApp.Views" d:DataContext="{d:DesignInstance Type=vm:HomeViewModel}"
-        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="EntireWorld" Height="750" Width="1200">
-    <ContentControl Content="{Binding CurrentViewModel}">
-        <ContentControl.Resources>
-            <DataTemplate DataType="{x:Type vm:RealEstatesViewModel}">
-                <v:TestUserControl/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
-                <v:HomeWindow/>
-            </DataTemplate>
-        </ContentControl.Resources>
-    </ContentControl>
+        WindowStartupLocation="CenterScreen"
+        Title="EntireWorld" Height="850" Width="1300">
+    <Window.DataContext>
+        <vm:HomeViewModel/>
+    </Window.DataContext>
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
+        <Border>
+            <Border.Background>
+                <ImageBrush ImageSource="/Resources/loginwallpaper.jpg"
+                            Stretch="Fill"
+                            Opacity="0.85"/>
+            </Border.Background>
+        </Border>
+
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Rectangle Fill="Gray" Width="100"
+                        Height="75" Margin="10"/>
+                <TextBlock Text="EntireWorld" HorizontalAlignment="Center" FontSize="18"/>
+            </StackPanel>
+            <StackPanel Margin="0,50,0,0"
+                       >
+                <Button Style="{DynamicResource MenuButtonStyle}"
+                        Content="Объекты недвижимости"
+                       />
+                <Button Style="{DynamicResource MenuButtonStyle}"
+                        Content="Клиенты"/>
+                <Button Style="{DynamicResource MenuButtonStyle}"
+                        Content="Сделки"/>
+                <Button Style="{DynamicResource MenuButtonStyle}"
+                        Content="Статистика"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Frame Grid.Column="1"
+               Content="{Binding CurrentPage, Mode=OneWay}"/>
+    </Grid>
 </Window>

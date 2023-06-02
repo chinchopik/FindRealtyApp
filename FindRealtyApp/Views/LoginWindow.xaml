@@ -51,7 +51,7 @@
 
         <Grid Grid.Row="2"
               Grid.Column="1"
-              ShowGridLines="True">
+              ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>

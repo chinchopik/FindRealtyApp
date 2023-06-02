@@ -1,21 +1,25 @@
-﻿using FindRealtyApp.Stores;
+﻿
+using FindRealtyApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace FindRealtyApp.ViewModel
 {
     class HomeViewModel : BaseModel
     {
-        private readonly NavigationStore _navigationStore;
-        public BaseModel CurrentViewModel => _navigationStore.CurrentViewModel;
-        
-        public HomeViewModel(NavigationStore navigationStore)
+
+        public Page CurrentPage
         {
-           
-            _navigationStore = navigationStore;
+            get => new RealEstatesPage();
+        }
+        public HomeViewModel()
+        {
+
         }
     }
 }
