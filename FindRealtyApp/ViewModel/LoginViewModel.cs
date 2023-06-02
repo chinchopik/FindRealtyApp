@@ -3,6 +3,7 @@ using FindRealtyApp.Repositories;
 using FindRealtyApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -48,17 +49,27 @@ namespace FindRealtyApp.ViewModel
 
         private void Authenticate()
         {
-            var isValidUser = userRepository.AuthenticateUser(Username, Password);
-            if (isValidUser)
+            try
             {
-                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
-                MenuWindow menuWindow = new MenuWindow();
-                Application.Current.MainWindow.Close();
-                menuWindow.Show();
+                var isValidUser = userRepository.AuthenticateUser(Username, Password);
+                if (isValidUser)
+                {
+                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
+                    HomeWindow homeWindow = new HomeWindow();
+                    Application.Current.MainWindow.Close();
+                    homeWindow.Show();
 
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин или пароль!");
+                }
             }
-            else
-                MessageBox.Show("freak-vonuchka");
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                           
+            }
         }
     }
 }
