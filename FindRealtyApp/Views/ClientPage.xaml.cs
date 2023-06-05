@@ -20,10 +20,10 @@ namespace FindRealtyApp.Views
     /// <summary>
     /// Логика взаимодействия для RealEstatesPage.xaml
     /// </summary>
-    public partial class RealEstatesPage : Page
+    public partial class ClientPage : Page
     {
         private ClientRepository _clientRepository = new ClientRepository();
-        public RealEstatesPage()
+        public ClientPage()
         {
             InitializeComponent();
 
@@ -61,9 +61,12 @@ namespace FindRealtyApp.Views
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditWindow EditWindow = new EditWindow(DataGridView.SelectedItem as Client);
-            EditWindow.ShowDialog();
-            DataGridView.ItemsSource = _clientRepository.GetAllClients();
+            if (DataGridView.SelectedItem != null)
+            {
+                EditWindow EditWindow = new EditWindow(DataGridView.SelectedItem as Client);
+                EditWindow.ShowDialog();
+                DataGridView.ItemsSource = _clientRepository.GetAllClients();
+            }
         }
     }
 }

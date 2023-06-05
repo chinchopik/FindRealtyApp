@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:FindRealtyApp.ViewModel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        MinHeight="850" MinWidth="1300"
         Title="EntireWorld" Height="850" Width="1300">
     <Window.DataContext>
         <vm:HomeViewModel/>
@@ -35,19 +36,31 @@
             </StackPanel>
             <StackPanel Margin="0,50,0,0"
                        >
-                <Button Style="{DynamicResource MenuButtonStyle}"
+                <Button Name="RealEstatesPage"
+                        Style="{DynamicResource MenuButtonStyle}"
                         Content="Объекты недвижимости"
+                        Click="RealEstatesPage_Click"
                        />
-                <Button Style="{DynamicResource MenuButtonStyle}"
-                        Content="Клиенты"/>
-                <Button Style="{DynamicResource MenuButtonStyle}"
+                <Button x:Name="ButtonClients"
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Content="Клиенты"
+                        Click="ButtonClients_Click"/>
+                <Button Name="ButtonDeals"
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Click="ButtonDeals_Click"
                         Content="Сделки"/>
                 <Button Style="{DynamicResource MenuButtonStyle}"
                         Content="Статистика"/>
+                <Button x:Name="ButtonLogOut"
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Content="Выход"
+                        Click="ButtonLogOut_Click"/>
             </StackPanel>
         </StackPanel>
 
-        <Frame Grid.Column="1"
+        <Frame Name="MainFrame"
+                Grid.Column="1"
+               NavigationUIVisibility="Hidden"
                Content="{Binding CurrentPage, Mode=OneWay}"/>
     </Grid>
 </Window>

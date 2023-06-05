@@ -23,5 +23,28 @@ namespace FindRealtyApp.Views
         {
             InitializeComponent();
         }
+
+        private void ButtonClients_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new ClientPage();
+        }
+
+        private void RealEstatesPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new RealEstatePage();
+        }
+
+        private void ButtonDeals_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new DealPage();
+        }
+
+        private void ButtonLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            Application.Current.MainWindow = loginWindow;
+            loginWindow.Show();
+            this.Close();
+        }
     }
 }

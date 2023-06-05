@@ -15,7 +15,7 @@ namespace FindRealtyApp.ViewModel
 
         public Page CurrentPage
         {
-            get => new RealEstatesPage();
+            get => new RealEstatePage();
         }
         public HomeViewModel()
         {

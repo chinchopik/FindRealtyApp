@@ -55,11 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Deal.cs" />
+    <Compile Include="Models\House.cs" />
     <Compile Include="Models\IUserRepository.cs" />
+    <Compile Include="Models\Land.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\RealEstate.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\DealRepository.cs" />
+    <Compile Include="Repositories\RealEstateRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
@@ -67,17 +74,20 @@
     <Compile Include="Views\AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DealPage.xaml.cs">
+      <DependentUpon>DealPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditWindow.xaml.cs">
       <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RealEstatesPage.xaml.cs">
-      <DependentUpon>RealEstatesPage.xaml</DependentUpon>
+    <Compile Include="Views\RealEstatePage.xaml.cs">
+      <DependentUpon>RealEstatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TestUserControl.xaml.cs">
-      <DependentUpon>TestUserControl.xaml</DependentUpon>
+    <Compile Include="Views\ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\PasswordBox.xaml">
       <SubType>Designer</SubType>
@@ -100,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DealPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,11 +142,11 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\RealEstatesPage.xaml">
+    <Page Include="Views\RealEstatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TestUserControl.xaml">
+    <Page Include="Views\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
