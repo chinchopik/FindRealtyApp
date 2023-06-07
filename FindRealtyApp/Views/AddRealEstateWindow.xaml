@@ -1,0 +1,69 @@
+﻿<Window x:Class="FindRealtyApp.Views.AddRealEstateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FindRealtyApp.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="AddRealEstateWindow" Height="350" Width="500">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Content="Адрес: "
+               Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1"
+               Content="Площадь: "
+               Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="2"
+               Content="Количество этажей: "
+               Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="3"
+               Content="Количество комнат: "
+               Style="{DynamicResource LabelStyle}"/>
+        <TextBox Name="AddressBox"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="10"
+                 Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox Name="AreaBox"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                
+                 Margin="10"
+                 Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox Name="FloorsBox"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="10"
+                 Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox Name="RoomsBox"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="10"
+                 Style="{DynamicResource TextBoxStyle}"/>
+        <Button Name="ButtonAdd"
+                Grid.Row="4"
+                Click="ButtonAdd_Click"
+                Margin="15"
+                Content="Добавить"
+                Style="{DynamicResource ButtonStyle}"/>
+        <Button x:Name="ButtonBack"
+                Click="ButtonBack_Click"
+                Grid.Row="4"
+                Grid.Column="1"
+                Margin="15"
+                Content="Отмена"
+                Style="{DynamicResource ButtonStyle}"/>
+    </Grid>
+</Window>

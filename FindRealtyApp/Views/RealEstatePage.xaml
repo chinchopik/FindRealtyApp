@@ -14,9 +14,8 @@
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="DataGridView" Height="500" VerticalAlignment="Top" Grid.Row="1"
-                  
-                  Margin="10" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
+        <DataGrid Name="DataGridView" Height="500" VerticalAlignment="Top" Grid.Row="1"    
+                  Margin="30" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
 
             </DataGrid.Columns>
@@ -29,28 +28,42 @@
             </DataGrid.RowStyle>
         </DataGrid>
 
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                    Margin="30"
+                    HorizontalAlignment="Left"
+                    Grid.Row="0">
+            <Label Content="Поиск: "
+                   VerticalAlignment="Center"/>
+            <TextBox Width="150"
+                     Height="25"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Вид объекта недвижимости: "
+                   Margin="20,0,0,0"/>
+            <ComboBox Name="RealEstatesTypes"
+                      Width="150"
+                      SelectionChanged="RealEstatesTypes_SelectionChanged"/>
+        </StackPanel>
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"
                     Grid.Row="2" HorizontalAlignment="Center" >
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
-                Content="Добавить"
+                    Content="Добавить"
                     Margin="10,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Style="{DynamicResource ActionButtonStyle}"/>
             <Button Name="ButtonEdit"
                     Click="ButtonEdit_Click"
                     Content="Изменить"
                     Margin="20,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Style="{DynamicResource ActionButtonStyle}"/>
 
             <Button x:Name="ButtonDelete"
                     Click="ButtonDelete_Click"
                     Grid.Row="1"
-                Content="Удалить"
-                Margin="20,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Content="Удалить"
+                    Margin="20,0,0,0"
+                    Style="{DynamicResource ActionButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Page>

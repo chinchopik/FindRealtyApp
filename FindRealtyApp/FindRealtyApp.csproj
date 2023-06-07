@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -69,16 +72,23 @@
     <Compile Include="Repositories\RealEstateRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Stores\RealEstateType.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelCommand.cs" />
-    <Compile Include="Views\AddWindow.xaml.cs">
-      <DependentUpon>AddWindow.xaml</DependentUpon>
+    <Compile Include="Views\AddClientWindow.xaml.cs">
+      <DependentUpon>AddClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddRealEstateWindow.xaml.cs">
+      <DependentUpon>AddRealEstateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DealPage.xaml.cs">
       <DependentUpon>DealPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditWindow.xaml.cs">
-      <DependentUpon>EditWindow.xaml</DependentUpon>
+    <Compile Include="Views\EditClientWindow.xaml.cs">
+      <DependentUpon>EditClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditRealEstateWindow.xaml.cs">
+      <DependentUpon>EditRealEstateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -109,7 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddWindow.xaml">
+    <Page Include="Styles\PageElementsStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddRealEstateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +135,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditWindow.xaml">
+    <Page Include="Views\EditClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditRealEstateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,11 +199,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Stores\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\loginwallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

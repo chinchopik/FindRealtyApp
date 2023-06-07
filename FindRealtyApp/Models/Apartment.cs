@@ -10,7 +10,7 @@ namespace FindRealtyApp.Models
     {
         public int Id { get; set; }
         public int TotalFloors { get; set; }
-        public float TotalArea { get; set; }
-        public int NubmerOfRooms { get; set; }
+        public double TotalArea { get; set; }
+        public int NumberOfRooms { get; set; }
     }
 }

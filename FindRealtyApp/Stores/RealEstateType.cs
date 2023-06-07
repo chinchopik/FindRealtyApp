@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FindRealtyApp.Models
+namespace FindRealtyApp.Stores
 {
-    interface IUserRepository
+    public enum RealEstateType : Byte
     {
-
-        bool AuthenticateUser(string login, string password);
-
+        House,
+        Land,
+        Apartments
     }
 }

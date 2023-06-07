@@ -24,18 +24,257 @@ namespace FindRealtyApp.Repositories
                     {
                         var realEstate = new RealEstate();
                         realEstate.Id = reader.GetInt32(0);
-                        realEstate.AddressCity = reader.GetString(1);
-                        realEstate.AddressStreet = reader.GetString(2);
-                        realEstate.AddressHouse = reader.GetString(3);
-                        realEstate.AddressNumber = reader.GetString(4);
-                        realEstate.LatitudeCoordinate = reader.GetDouble(5);
-                        realEstate.LongitudeCoordinate = reader.GetDouble(6);
-
-
+                        realEstate.Address = reader.GetString(1);
                         realEstates.Add(realEstate);
                     }
                     return realEstates;
                 }
+            }
+        }
+
+        public IEnumerable<House> GetHouses()
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM ViewRealEstatesHouses";
+                SqlCommand command = new SqlCommand(query, connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    var houses = new List<House>();
+                    while (reader.Read())
+                    {
+                        var realEstate = new House();
+                        realEstate.Id = reader.GetInt32(0);
+                        realEstate.Address = reader.GetString(1);
+                        realEstate.TotalFloors = reader.GetInt32(2);
+                        realEstate.TotalArea = reader.GetDouble(3);
+                        houses.Add(realEstate);
+                    }
+                    return houses;
+                }
+            }
+        }
+
+        public IEnumerable<Apartment> GetApartments()
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM ViewRealEstatesApartments";
+                SqlCommand command = new SqlCommand(query, connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    var apartments = new List<Apartment>();
+                    while (reader.Read())
+                    {
+                        var realEstate = new Apartment();
+                        realEstate.Id = reader.GetInt32(0);
+                        realEstate.Address = reader.GetString(1);
+                        realEstate.TotalFloors = reader.GetInt32(2);
+                        realEstate.TotalArea = reader.GetDouble(3);
+                        realEstate.NumberOfRooms = reader.GetInt32(4);
+                        apartments.Add(realEstate);
+                    }
+                    return apartments;
+                }
+            }
+        }
+
+        public IEnumerable<Land> GetLands()
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM ViewRealEstatesLands";
+                SqlCommand command = new SqlCommand(query, connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    var lands = new List<Land>();
+                    while (reader.Read())
+                    {
+                        var realEstate = new Land();
+                        realEstate.Id = reader.GetInt32(0);
+                        realEstate.Address = reader.GetString(1);
+                        realEstate.TotalArea = reader.GetDouble(2);
+                        lands.Add(realEstate);
+                    }
+                    return lands;
+                }
+            }
+        }
+
+        public void AddHouse(House house)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Address", $"{house.Address}");
+
+                command.ExecuteNonQuery();
+
+                command = new SqlCommand("SELECT TOP 1 ID FROM RealEstate ORDER BY Id DESC", connection);
+                var id = command.ExecuteScalar();
+
+                query = "INSERT INTO House (Id,TotalFloors, TotalArea) VALUES (@Id, @TotalFloors, @TotalArea)";
+                command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Id", $"{id}");
+                command.Parameters.AddWithValue("@TotalFloors", $"{house.TotalFloors}");
+                command.Parameters.AddWithValue("@TotalArea", System.Data.SqlDbType.Float).Value = house.TotalArea;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void AddLand(Land land)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Address", $"{land.Address}");
+
+                command.ExecuteNonQuery();
+
+                command = new SqlCommand("SELECT TOP 1 ID FROM RealEstate ORDER BY Id DESC", connection);
+                var id = command.ExecuteScalar();
+
+                query = "INSERT INTO Land (Id, TotalArea) VALUES (@Id, @TotalArea)";
+                command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Id", $"{id}");
+                command.Parameters.AddWithValue("@TotalArea", System.Data.SqlDbType.Float).Value = land.TotalArea;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        public void AddApartment(Apartment apartment)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Address", $"{apartment.Address}");
+
+                command.ExecuteNonQuery();
+
+                command = new SqlCommand("SELECT TOP 1 ID FROM RealEstate ORDER BY Id DESC", connection);
+                var id = command.ExecuteScalar();
+
+                query = "INSERT INTO Apartments (Id,TotalFloors, TotalArea, NumberOfRooms) VALUES (@Id, @TotalFloors, @TotalArea, @NumberOfRooms)";
+                command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@Id", $"{id}");
+                command.Parameters.AddWithValue("@TotalFloors", $"{apartment.TotalFloors}");
+                command.Parameters.AddWithValue("@TotalArea", System.Data.SqlDbType.Float).Value = apartment.TotalArea;
+                command.Parameters.AddWithValue("@NumberOfRooms", $"{apartment.NumberOfRooms}");
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void EditLand(Land land)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", land.Id);
+                sqlCommand.Parameters.AddWithValue("@Address", land.Address);
+
+                sqlCommand.ExecuteNonQuery();
+
+                query = "UPDATE Land SET TotalArea = @TotalArea WHERE ID = @Id";
+
+                sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", land.Id);
+                sqlCommand.Parameters.AddWithValue("@TotalArea", land.TotalArea);
+
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+
+            }
+        }
+
+        public void EditHouse(House house)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", house.Id);
+                sqlCommand.Parameters.AddWithValue("@Address", house.Address);
+
+                sqlCommand.ExecuteNonQuery();
+
+                query = "UPDATE House SET TotalArea = @TotalArea, TotalFloors = @TotalFloors WHERE ID = @Id";
+
+                sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", house.Id);
+                sqlCommand.Parameters.AddWithValue("@TotalArea", house.TotalArea);
+                sqlCommand.Parameters.AddWithValue("@TotalFloors", house.TotalFloors);
+
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+
+            }
+        }
+
+        public void EditApartment(Apartment apartment)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", apartment.Id);
+                sqlCommand.Parameters.AddWithValue("@Address", apartment.Address);
+
+                sqlCommand.ExecuteNonQuery();
+
+                query = "UPDATE Apartment SET TotalArea = @TotalArea, TotalFloors = @TotalFloors, NumberOfRooms =@NumberOfRooms WHERE ID = @Id";
+
+                sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", apartment.Id);
+                sqlCommand.Parameters.AddWithValue("@TotalArea", apartment.TotalArea);
+                sqlCommand.Parameters.AddWithValue("@TotalFloors", apartment.TotalFloors);
+                sqlCommand.Parameters.AddWithValue("@NumberOfRooms", apartment.NumberOfRooms);
+
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+
+            }
+        }
+
+        public void Remove(int id)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "DELETE FROM RealEstate WHERE Id = @Id";
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Id", $"{id}");
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
     }

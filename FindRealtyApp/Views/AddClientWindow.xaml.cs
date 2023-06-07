@@ -19,10 +19,10 @@ namespace FindRealtyApp.Views
     /// <summary>
     /// Логика взаимодействия для AddEditWindow.xaml
     /// </summary>
-    public partial class AddWindow : Window
+    public partial class AddClientWindow : Window
     {
         ClientRepository clientRepositoty = new ClientRepository();
-        public AddWindow()
+        public AddClientWindow()
         {
             InitializeComponent();
         }

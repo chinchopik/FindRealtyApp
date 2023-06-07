@@ -30,8 +30,8 @@
 
         <StackPanel>
             <StackPanel HorizontalAlignment="Center">
-                <Rectangle Fill="Gray" Width="100"
-                        Height="75" Margin="10"/>
+                <Image Source="/Resources/logo.png" Width="100"
+                        Height="50" Margin="10" Stretch="UniformToFill" />
                 <TextBlock Text="EntireWorld" HorizontalAlignment="Center" FontSize="18"/>
             </StackPanel>
             <StackPanel Margin="0,50,0,0"

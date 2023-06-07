@@ -19,11 +19,11 @@ namespace FindRealtyApp.Views
     /// <summary>
     /// Логика взаимодействия для EditWindow.xaml
     /// </summary>
-    public partial class EditWindow : Window
+    public partial class EditClientWindow : Window
     {
         ClientRepository clientRepository = new ClientRepository();
         private Client _client;
-        public EditWindow(Client client)
+        public EditClientWindow(Client client)
         {
             InitializeComponent();
             FirstNameBox.Text = client.FirstName;

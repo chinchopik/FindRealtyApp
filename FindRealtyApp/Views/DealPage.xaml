@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DealPage">
 
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition />
@@ -17,7 +17,7 @@
 
         <DataGrid Name="DataGridView" Height="500" VerticalAlignment="Top" Grid.Row="1"
                   
-                  Margin="10" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
+                  Margin="30" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
 
             </DataGrid.Columns>
@@ -34,24 +34,21 @@
                     Grid.Row="2" HorizontalAlignment="Center" >
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
-                Content="Добавить"
+                    Content="Добавить"
                     Margin="10,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Style="{DynamicResource ActionButtonStyle}"/>
             <Button Name="ButtonEdit"
                     Click="ButtonEdit_Click"
                     Content="Изменить"
                     Margin="20,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Style="{DynamicResource ActionButtonStyle}"/>
 
             <Button x:Name="ButtonDelete"
                     Click="ButtonDelete_Click"
                     Grid.Row="1"
-                Content="Удалить"
-                Margin="20,0,0,0"
-                Height="50"
-                Width="150"/>
+                    Content="Удалить"
+                    Margin="20,0,0,0"
+                    Style="{DynamicResource ActionButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Page>
