@@ -15,39 +15,33 @@
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="DataGridView" Height="500" VerticalAlignment="Top" Grid.Row="1"
-                  
-                  Margin="30" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
+        <Border Grid.Row="1"
+                BorderThickness="1"
+                BorderBrush="Black"></Border>
+        
+        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="1"
+                  MinColumnWidth="150" CanUserAddRows="False"
+                  Margin="15" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
 
             </DataGrid.Columns>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="Height" Value="50"/>
                     <Setter Property="BorderBrush" Value="Gray"/>
                     <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </DataGrid.RowStyle>
         </DataGrid>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"
-                    Grid.Row="2" HorizontalAlignment="Center" >
+                    Grid.Row="2" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
                     Content="Добавить"
                     Margin="10,0,0,0"
-                    Style="{DynamicResource ActionButtonStyle}"/>
-            <Button Name="ButtonEdit"
-                    Click="ButtonEdit_Click"
-                    Content="Изменить"
-                    Margin="20,0,0,0"
-                    Style="{DynamicResource ActionButtonStyle}"/>
-
-            <Button x:Name="ButtonDelete"
-                    Click="ButtonDelete_Click"
-                    Grid.Row="1"
-                    Content="Удалить"
-                    Margin="20,0,0,0"
+                    
                     Style="{DynamicResource ActionButtonStyle}"/>
         </StackPanel>
     </Grid>

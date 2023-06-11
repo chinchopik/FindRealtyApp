@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace FindRealtyApp.Models
 {
-    public class Client : Person
+    class Agent : Person
     {
         public new int Id { get; set; }
         public new string FirstName { get; set; }
         public new string LastName { get; set; }
         public new string Patronymic { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
+        public int DealShare { get; set; }
     }
-
 }

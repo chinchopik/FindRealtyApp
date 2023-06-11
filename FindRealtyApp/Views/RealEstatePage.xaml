@@ -7,46 +7,45 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RealEstatePage">
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition />
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="DataGridView" Height="500" VerticalAlignment="Top" Grid.Row="1"    
-                  Margin="30" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
+        <Border Grid.Row="1"
+                BorderThickness="1"
+                BorderBrush="Black"></Border>
+        
+        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="1"    
+                  MinColumnWidth="150" CanUserAddRows="False"
+                  Margin="15" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
-
             </DataGrid.Columns>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="Height" Value="50"/>
                     <Setter Property="BorderBrush" Value="Gray"/>
                     <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </DataGrid.RowStyle>
         </DataGrid>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-                    Margin="30"
+                    Margin="15"
                     HorizontalAlignment="Left"
                     Grid.Row="0">
-            <Label Content="Поиск: "
-                   VerticalAlignment="Center"/>
-            <TextBox Width="150"
-                     Height="25"
-                     VerticalContentAlignment="Center"
-                     VerticalAlignment="Center"/>
             <Label Content="Вид объекта недвижимости: "
-                   Margin="20,0,0,0"/>
+                   Margin="0,0,0,0"/>
             <ComboBox Name="RealEstatesTypes"
                       Width="150"
                       SelectionChanged="RealEstatesTypes_SelectionChanged"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"
-                    Grid.Row="2" HorizontalAlignment="Center" >
+                    Grid.Row="2" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
                     Content="Добавить"

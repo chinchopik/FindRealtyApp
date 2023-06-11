@@ -48,7 +48,7 @@ namespace FindRealtyApp.Views
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            if(DataGridView.SelectedItem != null)
+            if(DataGridView.SelectedItem != null && RealEstatesTypes.SelectedItem != "По умолчанию")
             {
                 EditRealEstateWindow editRealEstateWindow = new EditRealEstateWindow(map[(string)(RealEstatesTypes.SelectedItem)], DataGridView.SelectedItem as RealEstate);
                 editRealEstateWindow.ShowDialog();
@@ -78,7 +78,9 @@ namespace FindRealtyApp.Views
                         default:
                             realEstateRepository.Remove((DataGridView.SelectedItem as RealEstate).Id);
                             break;
-                    }                   
+                    }
+
+                    MessageBox.Show("Данные успешно удалены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }
                 catch (Exception ex)
                 {
@@ -86,7 +88,6 @@ namespace FindRealtyApp.Views
                 }
                 finally
                 {
-                    MessageBox.Show("Данные успешно удалены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     DataGridView.ItemsSource = realEstateRepository.GetAllRealEstates();
                     RealEstatesTypes.SelectedItem = "По умолчанию";
                 }

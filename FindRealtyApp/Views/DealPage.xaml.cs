@@ -39,7 +39,9 @@ namespace FindRealtyApp.Views
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddDealWindow addDealWindow = new AddDealWindow();
+            addDealWindow.ShowDialog();
+            DataGridView.ItemsSource = dealRepository.GetAllRealEstates();
         }
     }
 }

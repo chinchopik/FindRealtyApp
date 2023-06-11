@@ -49,28 +49,33 @@ namespace FindRealtyApp.ViewModel
 
         private void Authenticate()
         {
-            try
+            if(Username!=null && Password != null)
             {
-                var isValidUser = userRepository.AuthenticateUser(Username, Password);
-                if (isValidUser)
+                try
                 {
-                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
-                    HomeWindow homeWindow = new HomeWindow();
-                    Application.Current.MainWindow.Close();
+                    var isValidUser = userRepository.AuthenticateUser(Username, Password);
+                    if (isValidUser)
+                    {
+                        userRepository.AddLoggingHistory(Username);
+                        Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
+                        HomeWindow homeWindow = new HomeWindow();
+                        Application.Current.MainWindow.Close();
 
-                    homeWindow.Show();
+                        homeWindow.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверный логин или пароль!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 }
-                else
-                {
-                    MessageBox.Show("Неверный логин или пароль!");
-                }
             }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show($"{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                           
-            }
+           
         }
     }
 }

@@ -13,5 +13,8 @@ namespace FindRealtyApp.Models
 
         public string Client { get; set; }
         public string Agent { get; set; }
+
+        public int Price { get; set; }
+        public DateTime Date { get; set; }
     }
 }

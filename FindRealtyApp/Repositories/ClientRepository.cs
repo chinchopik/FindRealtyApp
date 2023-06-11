@@ -25,15 +25,15 @@ namespace FindRealtyApp.Repositories
                     {
                         var client = new Client();
                         client.Id = reader.GetInt32(0);
+                        client.Phone = reader.GetString(4);
+                        client.Email = reader.GetString(5);
                         client.FirstName = reader.GetString(1);
                         client.LastName = reader.GetString(2);
                         client.Patronymic = reader.GetString(3);
-                        client.Phone = reader.GetString(4);
-                        client.Email = reader.GetString(5);
                         clients.Add(client);
                     }
                     return clients;
-                }            
+                }         
             }
         }
         public void Add(Client client)
@@ -104,6 +104,31 @@ namespace FindRealtyApp.Repositories
                 sqlCommand.ExecuteNonQuery();
                 connection.Close();
 
+            }
+        }
+
+        public IEnumerable<Agent> GetAllAgents()
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM ViewAgent";
+                SqlCommand command = new SqlCommand(query, connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    var agents = new List<Agent>();
+                    while (reader.Read())
+                    {
+                        var agent = new Agent();
+                        agent.Id = reader.GetInt32(0);
+                        agent.FirstName = reader.GetString(1);
+                        agent.LastName = reader.GetString(2);
+                        agent.Patronymic = reader.GetString(3);
+                        agent.DealShare = reader.GetInt32(4);
+                        agents.Add(agent);
+                    }
+                    return agents;
+                }
             }
         }
     }

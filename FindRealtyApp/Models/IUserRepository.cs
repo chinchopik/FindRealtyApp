@@ -10,6 +10,6 @@ namespace FindRealtyApp.Models
     {
 
         bool AuthenticateUser(string login, string password);
-
+        void AddLoggingHistory(string login);
     }
 }

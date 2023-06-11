@@ -43,11 +43,12 @@ namespace FindRealtyApp.Views
         {
             try
             {
-                if(type == RealEstateType.Land)
+                if (type == RealEstateType.Land)
                 {
                     Land land = new Land();
                     land.Address = AddressBox.Text;
                     land.TotalArea = Convert.ToDouble(AreaBox.Text);
+                    land.Price = Convert.ToInt32(PriceBox.Text);
                     realEstateRepository.AddLand(land);
                 }
                 else if (type == RealEstateType.House)
@@ -56,6 +57,7 @@ namespace FindRealtyApp.Views
                     house.Address = AddressBox.Text;
                     house.TotalArea = Convert.ToDouble(AreaBox.Text);
                     house.TotalFloors = Convert.ToInt32(FloorsBox.Text);
+                    house.Price = Convert.ToInt32(PriceBox.Text);
                     realEstateRepository.AddHouse(house);
                 }
                 else
@@ -65,12 +67,19 @@ namespace FindRealtyApp.Views
                     apartment.TotalArea = Convert.ToDouble(AreaBox.Text);
                     apartment.TotalFloors = Convert.ToInt32(FloorsBox.Text);
                     apartment.NumberOfRooms = Convert.ToInt32(RoomsBox.Text);
+                    apartment.Price = Convert.ToInt32(PriceBox.Text);
                     realEstateRepository.AddApartment(apartment);
                 }
+                MessageBox.Show("Данные успешно сохранены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             finally
             {
-                MessageBox.Show("Данные успешно сохранены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 this.Close();
             }
         }

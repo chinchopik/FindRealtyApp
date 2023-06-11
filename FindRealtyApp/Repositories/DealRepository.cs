@@ -27,14 +27,34 @@ namespace FindRealtyApp.Repositories
                         deal.Address = reader.GetString(1);
                         deal.Client = reader.GetString(2);
                         deal.Agent = reader.GetString(3);
-
-
+                        deal.Price = reader.GetInt32(4);
+                        deal.Date = reader.GetDateTime(5);
                         deals.Add(deal);
                     }
                     return deals;
                 }
             }
-        }
 
+            
+        }
+        public void AddDeal(List<Deal> deals)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();          
+
+                string query = "INSERT INTO Deal (IdRealEstate, IdClient, IdAgent, Date) VALUES (@IdRealEstate, @IdClient, @IdAgent, @Date)";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@IdRealEstate", $"{deals.ElementAt(0).Address}");
+                command.Parameters.AddWithValue("@IdClient", $"{deals.ElementAt(0).Client}");
+                command.Parameters.AddWithValue("@IdAgent", $"{deals.ElementAt(0).Agent}");
+                command.Parameters.AddWithValue("@Date", $"{deals.ElementAt(0).Date}");
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }    
     }
 }

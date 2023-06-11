@@ -12,7 +12,7 @@
     <Window.DataContext>
         <vm:HomeViewModel/>
     </Window.DataContext>
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
@@ -20,14 +20,16 @@
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
 
-        <Border>
+        <Border BorderBrush="Black"
+                BorderThickness="1">
             <Border.Background>
                 <ImageBrush ImageSource="/Resources/loginwallpaper.jpg"
                             Stretch="Fill"
                             Opacity="0.85"/>
             </Border.Background>
         </Border>
-
+    
+        
         <StackPanel>
             <StackPanel HorizontalAlignment="Center">
                 <Image Source="/Resources/logo.png" Width="100"
@@ -49,8 +51,10 @@
                         Style="{DynamicResource MenuButtonStyle}"
                         Click="ButtonDeals_Click"
                         Content="Сделки"/>
-                <Button Style="{DynamicResource MenuButtonStyle}"
-                        Content="Статистика"/>
+                <Button Name="ButtonStatistics"
+                        Style="{DynamicResource MenuButtonStyle}"
+                        Content="Статистика"
+                        Click="ButtonStatistics_Click"/>
                 <Button x:Name="ButtonLogOut"
                         Style="{DynamicResource MenuButtonStyle}"
                         Content="Выход"

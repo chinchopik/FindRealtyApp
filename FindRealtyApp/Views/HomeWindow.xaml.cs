@@ -46,5 +46,10 @@ namespace FindRealtyApp.Views
             loginWindow.Show();
             this.Close();
         }
+
+        private void ButtonStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new StatisticsPage();
+        }
     }
 }

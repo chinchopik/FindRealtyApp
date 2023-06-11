@@ -8,8 +8,9 @@ namespace FindRealtyApp.Models
 {
     class Land :RealEstate
     {
-        public int Id { get; set; }
+        public new int Id { get; set; }
         public double TotalArea { get; set; }
 
+        public new int Price { get; set; }
     }
 }

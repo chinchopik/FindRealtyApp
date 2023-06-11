@@ -37,6 +37,7 @@ namespace FindRealtyApp.Views
                     Land land = realEstate as Land;
                     AddressBox.Text = land.Address;
                     AreaBox.Text = land.TotalArea.ToString();
+                    PriceBox.Text = land.Price.ToString();
                     _realEstate = land;
                     currentType = type;
                     break;
@@ -47,6 +48,7 @@ namespace FindRealtyApp.Views
                     AddressBox.Text = house.Address;
                     AreaBox.Text = house.TotalArea.ToString();
                     FloorsBox.Text = house.TotalFloors.ToString();
+                    PriceBox.Text = house.Price.ToString();
                     _realEstate = house;
                     currentType = type;
                     break;
@@ -57,6 +59,7 @@ namespace FindRealtyApp.Views
                     AreaBox.Text = apartment.TotalArea.ToString();
                     FloorsBox.Text = apartment.TotalFloors.ToString();
                     RoomsBox.Text = apartment.NumberOfRooms.ToString();
+                    PriceBox.Text = apartment.Price.ToString();
                     _realEstate = apartment;
                     currentType = type;
                     break;
@@ -67,30 +70,46 @@ namespace FindRealtyApp.Views
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (currentType == RealEstateType.Land)
+            try
             {
-                Land land = _realEstate as Land;
-                land.Address = AddressBox.Text;
-                land.TotalArea = Convert.ToDouble(AreaBox.Text);
-                realEstateRepository.EditLand(land);
+                if (currentType == RealEstateType.Land)
+                {
+                    Land land = _realEstate as Land;
+                    land.Address = AddressBox.Text;
+                    land.TotalArea = Convert.ToDouble(AreaBox.Text);
+                    land.Price = Convert.ToInt32(PriceBox.Text);
+                    realEstateRepository.EditLand(land);
+                }
+                if (currentType == RealEstateType.House)
+                {
+                    House house = _realEstate as House;
+                    house.Address = AddressBox.Text;
+                    house.TotalArea = Convert.ToDouble(AreaBox.Text);
+                    house.TotalFloors = Convert.ToInt32(FloorsBox.Text);
+                    house.Price = Convert.ToInt32(PriceBox.Text);
+                    realEstateRepository.EditHouse(house);
+                }
+                if (currentType == RealEstateType.Apartments)
+                {
+                    Apartment apartment = _realEstate as Apartment;
+                    apartment.Address = AddressBox.Text;
+                    apartment.TotalArea = Convert.ToDouble(AreaBox.Text);
+                    apartment.TotalFloors = Convert.ToInt32(FloorsBox.Text);
+                    apartment.NumberOfRooms = Convert.ToInt32(RoomsBox.Text);
+                    apartment.Price = Convert.ToInt32(PriceBox.Text);
+                    realEstateRepository.EditApartment(apartment);
+                }
+                MessageBox.Show("Данные успешно сохранены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
-            if (currentType == RealEstateType.House)
+            catch (Exception ex)
             {
-                House house = _realEstate as House;
-                house.Address = AddressBox.Text;
-                house.TotalArea = Convert.ToDouble(AreaBox.Text);
-                house.TotalFloors = Convert.ToInt32(FloorsBox.Text);
-                realEstateRepository.EditHouse(house);
+                MessageBox.Show($"{ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);    
             }
-            if (currentType == RealEstateType.Apartments)
+            finally
             {
-                Apartment apartment = _realEstate as Apartment;
-                apartment.Address = AddressBox.Text;
-                apartment.TotalArea = Convert.ToDouble(AreaBox.Text);
-                apartment.TotalFloors = Convert.ToInt32(FloorsBox.Text);
-                apartment.NumberOfRooms = Convert.ToInt32(RoomsBox.Text);
-                realEstateRepository.EditApartment(apartment);
+                this.Close();
             }
+
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

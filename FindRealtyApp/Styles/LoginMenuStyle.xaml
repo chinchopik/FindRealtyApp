@@ -89,6 +89,8 @@
     <Style x:Key="CheckboxStyle" TargetType="CheckBox">
         <Setter Property="Margin" Value="5,10,0,0"/>
         <Setter Property="FontFamily" Value="/Resources/#Aileron Light"/>
+        <Setter Property ="Height" Value="auto"/>
+        <Setter Property ="Width" Value="auto"/>
     </Style>
 
     <Style x:Key="RegistrationLinkStyle" TargetType="TextBlock">

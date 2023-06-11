@@ -25,6 +25,7 @@ namespace FindRealtyApp.Repositories
                         var realEstate = new RealEstate();
                         realEstate.Id = reader.GetInt32(0);
                         realEstate.Address = reader.GetString(1);
+                        realEstate.Price = reader.GetInt32(2);
                         realEstates.Add(realEstate);
                     }
                     return realEstates;
@@ -49,6 +50,7 @@ namespace FindRealtyApp.Repositories
                         realEstate.Address = reader.GetString(1);
                         realEstate.TotalFloors = reader.GetInt32(2);
                         realEstate.TotalArea = reader.GetDouble(3);
+                        realEstate.Price = reader.GetInt32(4);
                         houses.Add(realEstate);
                     }
                     return houses;
@@ -74,6 +76,7 @@ namespace FindRealtyApp.Repositories
                         realEstate.TotalFloors = reader.GetInt32(2);
                         realEstate.TotalArea = reader.GetDouble(3);
                         realEstate.NumberOfRooms = reader.GetInt32(4);
+                        realEstate.Price = reader.GetInt32(5);
                         apartments.Add(realEstate);
                     }
                     return apartments;
@@ -97,6 +100,7 @@ namespace FindRealtyApp.Repositories
                         realEstate.Id = reader.GetInt32(0);
                         realEstate.Address = reader.GetString(1);
                         realEstate.TotalArea = reader.GetDouble(2);
+                        realEstate.Price = reader.GetInt32(3);
                         lands.Add(realEstate);
                     }
                     return lands;
@@ -109,10 +113,11 @@ namespace FindRealtyApp.Repositories
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
-                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                string query = "INSERT INTO RealEstate (Address, Price) VALUES (@Address, @Price)";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@Address", $"{house.Address}");
+                command.Parameters.AddWithValue("@Price", $"{house.Price}");
 
                 command.ExecuteNonQuery();
 
@@ -136,10 +141,11 @@ namespace FindRealtyApp.Repositories
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
-                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                string query = "INSERT INTO RealEstate (Address, Price) VALUES (@Address, @Price)";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@Address", $"{land.Address}");
+                command.Parameters.AddWithValue("@Price", $"{land.Price}");
 
                 command.ExecuteNonQuery();
 
@@ -161,10 +167,11 @@ namespace FindRealtyApp.Repositories
             using (SqlConnection connection = GetConnection())
             {
                 connection.Open();
-                string query = "INSERT INTO RealEstate (Address) VALUES (@Address)";
+                string query = "INSERT INTO RealEstate (Address, Price) VALUES (@Address, @Price)";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@Address", $"{apartment.Address}");
+                command.Parameters.AddWithValue("@Price", $"{apartment.Price}");
 
                 command.ExecuteNonQuery();
 
@@ -190,11 +197,12 @@ namespace FindRealtyApp.Repositories
             {
                 connection.Open();
 
-                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+                string query = "UPDATE RealEstate SET Address = @Address, Price = @Price WHERE ID = @Id";
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
                 sqlCommand.Parameters.AddWithValue("@Id", land.Id);
                 sqlCommand.Parameters.AddWithValue("@Address", land.Address);
+                sqlCommand.Parameters.AddWithValue("@Price", land.Price);
 
                 sqlCommand.ExecuteNonQuery();
 
@@ -216,11 +224,12 @@ namespace FindRealtyApp.Repositories
             {
                 connection.Open();
 
-                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+                string query = "UPDATE RealEstate SET Address = @Address, Price = @Price WHERE ID = @Id";
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
                 sqlCommand.Parameters.AddWithValue("@Id", house.Id);
                 sqlCommand.Parameters.AddWithValue("@Address", house.Address);
+                sqlCommand.Parameters.AddWithValue("@Price", house.Price);
 
                 sqlCommand.ExecuteNonQuery();
 
@@ -243,11 +252,12 @@ namespace FindRealtyApp.Repositories
             {
                 connection.Open();
 
-                string query = "UPDATE RealEstate SET Address = @Address WHERE ID = @Id";
+                string query = "UPDATE RealEstate SET Address = @Address, Price = @Price WHERE ID = @Id";
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
                 sqlCommand.Parameters.AddWithValue("@Id", apartment.Id);
                 sqlCommand.Parameters.AddWithValue("@Address", apartment.Address);
+                sqlCommand.Parameters.AddWithValue("@Price", apartment.Price);
 
                 sqlCommand.ExecuteNonQuery();
 

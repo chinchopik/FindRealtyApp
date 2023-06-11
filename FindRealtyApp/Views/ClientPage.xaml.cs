@@ -45,15 +45,15 @@ namespace FindRealtyApp.Views
                 try
                 {
                     _clientRepository.Remove(DataGridView.SelectedItem as Client);
+                    MessageBox.Show("Данные успешно удалены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show($"{ex.Message}");
+                    MessageBox.Show($"{ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
-                    MessageBox.Show("Данные успешно удалены!", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    DataGridView.ItemsSource = _clientRepository.GetAllClients();
+                   DataGridView.ItemsSource = _clientRepository.GetAllClients();
                 }
             }
         }
@@ -70,7 +70,11 @@ namespace FindRealtyApp.Views
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            DataGridView.ItemsSource = _clientRepository.GetAllClients().Where(p => p.LastName.ToLower().Contains(SearchBar.Text.ToLower())
+                    || p.FirstName.ToLower().Contains(SearchBar.Text.ToLower())
+                    || p.Patronymic.ToLower().Contains(SearchBar.Text.ToLower())
+                    || p.Phone.ToLower().Contains(SearchBar.Text.ToLower())
+                    || p.Email.ToLower().Contains(SearchBar.Text.ToLower())).ToList();
         }
     }
 }

@@ -25,5 +25,26 @@ namespace FindRealtyApp.Repositories
             }
             return validUser;
         }
+        public void AddLoggingHistory(string login)
+        {
+            DateTime dateTime = DateTime.Now;
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Id FROM [User] WHERE Login = @Login";
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@Login", login);
+
+                var id = sqlCommand.ExecuteScalar();
+
+                query = "INSERT INTO LoggingHistory (DateTime, IdUser) VALUES (@DateTime, @IdUser)";
+
+                sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@DateTime", dateTime);
+                sqlCommand.Parameters.AddWithValue("@IdUser", id);
+                sqlCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
