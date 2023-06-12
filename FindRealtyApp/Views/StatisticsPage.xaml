@@ -10,17 +10,24 @@
       Title="StatisticsPage"
       Loaded="Page_Loaded">
 
-    <Grid ShowGridLines="False">
+    <Grid ShowGridLines="False" >
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid ShowGridLines="False" Grid.Row="0" Grid.Column="0">
+        <Label Content="Статистика" 
+               FontSize="28"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Grid.ColumnSpan="2"/>
+
+        <Grid ShowGridLines="False" Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition/>
@@ -28,6 +35,28 @@
             
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Text="Объекты недвижимости"/>
             <lvc:PieChart Grid.Row="1" Margin="10,0,150,10" Name="pieChart" LegendLocation="Left"/>
+                     
         </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="1" ShowGridLines="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Text="Продажи за месяц"/>
+            
+            <lvc:CartesianChart Name="cartesianChart" Grid.Row="1" Margin="10">
+                <lvc:CartesianChart.Series>
+                    <lvc:ColumnSeries Title="Количество продаж:"/>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Месяц"/>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Продажи"/>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </Grid>
+
     </Grid>
 </Page>

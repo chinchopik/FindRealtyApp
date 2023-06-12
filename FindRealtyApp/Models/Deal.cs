@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindRealtyApp.Models
 {
-    class Deal
+    public class Deal
     {
         public int Id { get; set; }
         public string Address { get; set; }

@@ -10,16 +10,24 @@
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="100"/>
             <RowDefinition />
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1"
+        <Label Grid.Row="0"
+               Margin="10"
+               Content="Сделки"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="28"/>
+
+        <Border Grid.Row="2"
                 BorderThickness="1"
                 BorderBrush="Black"></Border>
         
-        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="1"
+        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="2"
                   MinColumnWidth="150" CanUserAddRows="False"
                   Margin="15" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
@@ -35,13 +43,38 @@
             </DataGrid.RowStyle>
         </DataGrid>
 
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                    Margin="15"
+                    HorizontalAlignment="Left"
+                    Grid.Row="1">
+            <Label Content="Поиск: "
+                   VerticalAlignment="Center"/>
+            <TextBox x:Name="SearchBar"
+                     Width="150"
+                     Height="25"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                     TextChanged="SearchBar_TextChanged"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"
-                    Grid.Row="2" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    Grid.Row="3" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
                     Content="Добавить"
                     Margin="10,0,0,0"
                     
+                    Style="{DynamicResource ActionButtonStyle}"/>
+            <Button Name="ButtonReceiptPDF"
+                    Click="ButtonReceiptPDF_Click"
+                    Content="Напечатать в PDF"
+                    Margin="20,0,0,0"
+                    
+                    Style="{DynamicResource ActionButtonStyle}"/>
+            <Button Name="ButtonReceiptDOCX"
+                    Click="ButtonReceiptDOCX_Click"
+                    Content="Напечатать в DOCX"
+                    Margin="20,0,0,0"             
                     Style="{DynamicResource ActionButtonStyle}"/>
         </StackPanel>
     </Grid>

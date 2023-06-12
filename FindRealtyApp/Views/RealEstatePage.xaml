@@ -9,16 +9,23 @@
       Title="RealEstatePage">
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="100"/>
             <RowDefinition />
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1"
+        <Label Grid.Row="0"
+               Margin="10"
+               Content="Объекты недвижимости"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="28"/>
+        <Border Grid.Row="2"
                 BorderThickness="1"
                 BorderBrush="Black"></Border>
         
-        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="1"    
+        <DataGrid Name="DataGridView" Height="auto" VerticalAlignment="Top" Grid.Row="2"    
                   MinColumnWidth="150" CanUserAddRows="False"
                   Margin="15" CanUserSortColumns="False" FrozenColumnCount="1" SelectionMode="Single">
             <DataGrid.Columns>
@@ -36,7 +43,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                     Margin="15"
                     HorizontalAlignment="Left"
-                    Grid.Row="0">
+                    Grid.Row="1">
             <Label Content="Вид объекта недвижимости: "
                    Margin="0,0,0,0"/>
             <ComboBox Name="RealEstatesTypes"
@@ -45,7 +52,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top"
-                    Grid.Row="2" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    Grid.Row="3" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Button Name="ButtonAdd"
                     Click="ButtonAdd_Click"
                     Content="Добавить"

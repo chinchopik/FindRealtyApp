@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:FindRealtyApp.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AddRealEstateWindow" Height="375" Width="500">
-    <Grid ShowGridLines="True">
+        Title="EntireWorld" Height="375" Width="500">
+    <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

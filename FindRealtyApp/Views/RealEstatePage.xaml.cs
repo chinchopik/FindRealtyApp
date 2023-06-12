@@ -98,7 +98,7 @@ namespace FindRealtyApp.Views
         {
             if (RealEstatesTypes.SelectedItem == "По умолчанию")
             {
-                MessageBox.Show("Сначала выберите тип объекта недвижимости", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Выберите тип объекта недвижимости", "Всплывающее окно", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             AddRealEstateWindow addRealEstateWindow = new AddRealEstateWindow(map[(string)(RealEstatesTypes.SelectedItem)]);
