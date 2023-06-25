@@ -11,47 +11,25 @@
         ResizeMode="NoResize"
         Title="EntireWorld" Height="550" Width="450">
 
-    <Window.Resources>
-        <Style x:Key="TempTextBox" TargetType="TextBox" BasedOn="{StaticResource LoginInputBoxStyle}">
+    <Window.Resources><Style x:Key="TempTextBox" TargetType="TextBox" BasedOn="{StaticResource LoginInputBoxStyle}">
             <Setter Property="Visibility" Value="Hidden"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding ElementName=ShowPasswordCheckBox, Path=IsChecked}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-    <Window.DataContext>
-        <vm:LoginViewModel/>
-    </Window.DataContext>
-
-        <Grid ShowGridLines="False">
-        <Grid.ColumnDefinitions>
+            <Style.Triggers><DataTrigger Binding="{Binding ElementName=ShowPasswordCheckBox, Path=IsChecked}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></Window.Resources>
+    <Window.DataContext><vm:LoginViewModel/></Window.DataContext>
+        <Grid ShowGridLines="False"><Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0.2*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
+        </Grid.ColumnDefinitions><Grid.RowDefinitions>
             <RowDefinition Height="0.05*"/>
             <RowDefinition Height="0.20*"/>
             <RowDefinition/>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/loginwallpaper.jpg"/>
-        </Grid.Background>
-
-        <Border Grid.Column="1"
-                Grid.Row="2"
-                Style="{DynamicResource RectangleStyle}">
-
-        </Border>
-
-        <Grid Grid.Row="2"
-              Grid.Column="1"
-              ShowGridLines="False">
+        <Grid.Background><ImageBrush ImageSource="/Resources/loginwallpaper.jpg"/></Grid.Background>
+        <Border Grid.Column="1" Grid.Row="2" Style="{DynamicResource RectangleStyle}"></Border>
+        <Grid Grid.Row="2" Grid.Column="1" ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
@@ -64,73 +42,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <Label Content="Вход"
-                   Grid.Column="1"
-                   Style="{DynamicResource LoginLabelStyle}"/>
-
-            <Border Grid.Column="1"
-                    Grid.Row="1"
-                    Style="{DynamicResource BorderTextBoxStyle}">
-                <TextBox x:Name="LoginInputBox"
-                         Text="{Binding Username}"
-                         Style="{DynamicResource LoginInputBoxStyle}"/>
+            <Label Content="Вход"  Grid.Column="1"   Style="{DynamicResource LoginLabelStyle}"/>
+            <Border Grid.Column="1" Grid.Row="1" Style="{DynamicResource BorderTextBoxStyle}">
+                <TextBox x:Name="LoginInputBox"  Text="{Binding Username}"  Style="{DynamicResource LoginInputBoxStyle}"/>
             </Border>
-
-            <Border Grid.Column="1"
-                    Grid.Row="2"
-                    Style="{DynamicResource BorderTextBoxStyle}">
+            <Border Grid.Column="1"   Grid.Row="2"  Style="{DynamicResource BorderTextBoxStyle}">
                 <contr:PasswordBox Password="{Binding Password}">
                     <contr:PasswordBox.Style>
                         <Style TargetType="contr:PasswordBox">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ElementName=ShowPasswordCheckBox, Path=IsChecked}" Value="True">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </contr:PasswordBox.Style>
-                </contr:PasswordBox>
-               
-            </Border>
-
+                                    <Setter Property="Visibility" Value="Hidden"/></DataTrigger>
+                            </Style.Triggers></Style></contr:PasswordBox.Style></contr:PasswordBox></Border>
             <TextBox    Grid.Row="2"
                         Grid.Column="1"
                         x:Name="TempTextBox"
                         Text="{Binding Password, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource TempTextBox}">
             </TextBox>
-
-
-            <CheckBox Name="ShowPasswordCheckBox"
-                      Style="{DynamicResource CheckboxStyle}"
-                      Content="Показать пароль"
-                      Grid.Column="1"
+            <CheckBox Name="ShowPasswordCheckBox"  Style="{DynamicResource CheckboxStyle}"  Content="Показать пароль"  Grid.Column="1"
                       Grid.Row="3"
                       Height="20"
                       VerticalAlignment="Top"/>
-
-            <Button x:Name="SubmitButton"
-                    Content="Войти"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    VerticalAlignment="Bottom"
+            <Button x:Name="SubmitButton" Content="Войти" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom"
                     Style="{DynamicResource SubmitStyle}" Click="SubmitButton_Click"
-                    Command="{Binding Auth}"/>
-
-            <TextBlock  Grid.Row="4"
-                        Grid.Column="1"
-                        Style="{DynamicResource RegistrationLinkStyle}">
-                <Hyperlink TextDecorations="None"
-                           Foreground="Gray"
-                           NavigateUri="http://www.google.com"
-                           
-                           RequestNavigate="Hyperlink_RequestNavigate" Cursor="Hand">
-                    <TextBlock Text="Регистрация"
-                               FontFamily="/Resources/#Aileron Light"/>
-                </Hyperlink>
-            </TextBlock>
-        </Grid>
-        
-    </Grid>
-</Window>
+                    Command="{Binding Auth}"/></Grid></Grid></Window>

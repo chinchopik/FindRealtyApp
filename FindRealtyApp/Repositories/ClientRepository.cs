@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FindRealtyApp.Repositories
 {
-    class ClientRepository : RepositoryBase
+    public class ClientRepository : RepositoryBase
     {
         public IEnumerable<Client> GetAllClients()
         {

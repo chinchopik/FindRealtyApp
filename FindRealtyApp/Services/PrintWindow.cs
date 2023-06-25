@@ -101,7 +101,7 @@ namespace FindRealtyApp.Services
             using (var stream = System.IO.File.Create(targetFile))
             {
                 encoder.Save(stream);
-            }
+            }   
         }
     }
 }

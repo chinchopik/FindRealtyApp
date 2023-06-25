@@ -27,7 +27,7 @@ namespace FindRealtyApp.Views
         public AddDealWindow()
         {
             InitializeComponent();
-            AddressBox.ItemsSource = realEstateRepository.GetAllRealEstates().Select(p => p.Address).ToList();
+            AddressBox.ItemsSource = realEstateRepository.GetAllRealEstates().Select(p=>p.Address).Except(dealRepository.GetAllRealEstates().Select(p => p.Address)); 
             ClientBox.ItemsSource = clientRepository.GetAllClients().Select(p=>$"{p.LastName} {p.FirstName} {p.Patronymic}").ToList();
             AgentBox.ItemsSource = clientRepository.GetAllAgents().Select(p => $"{p.LastName} {p.FirstName} {p.Patronymic}").ToList();
       

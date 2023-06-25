@@ -23,9 +23,7 @@
         <Border BorderBrush="Black"
                 BorderThickness="1">
             <Border.Background>
-                <ImageBrush ImageSource="/Resources/loginwallpaper.jpg"
-                            Stretch="Fill"
-                            Opacity="0.85"/>
+                <ImageBrush ImageSource="/Resources/loginwallpaper.jpg"   Stretch="Fill"     Opacity="0.85"/>
             </Border.Background>
         </Border>
     
@@ -38,33 +36,15 @@
             </StackPanel>
             <StackPanel Margin="0,50,0,0"
                        >
-                <Button Name="RealEstatesPage"
-                        Style="{DynamicResource MenuButtonStyle}"
-                        Content="Объекты недвижимости"
-                        Click="RealEstatesPage_Click"
+                <Button Name="RealEstatesPage" Style="{DynamicResource MenuButtonStyle}" Content="Объекты недвижимости"  Click="RealEstatesPage_Click"
                        />
-                <Button x:Name="ButtonClients"
-                        Style="{DynamicResource MenuButtonStyle}"
-                        Content="Клиенты"
-                        Click="ButtonClients_Click"/>
-                <Button Name="ButtonDeals"
-                        Style="{DynamicResource MenuButtonStyle}"
-                        Click="ButtonDeals_Click"
-                        Content="Сделки"/>
-                <Button Name="ButtonStatistics"
-                        Style="{DynamicResource MenuButtonStyle}"
-                        Content="Статистика"
-                        Click="ButtonStatistics_Click"/>
-                <Button x:Name="ButtonLogOut"
-                        Style="{DynamicResource MenuButtonStyle}"
-                        Content="Выход"
-                        Click="ButtonLogOut_Click"/>
+                <Button x:Name="ButtonClients" Style="{DynamicResource MenuButtonStyle}" Content="Клиенты" Click="ButtonClients_Click"/>
+                <Button Name="ButtonDeals"  Style="{DynamicResource MenuButtonStyle}"  Click="ButtonDeals_Click"  Content="Сделки"/>
+                <Button Name="ButtonStatistics"  Style="{DynamicResource MenuButtonStyle}" Content="Статистика"  Click="ButtonStatistics_Click"/>
+                <Button x:Name="ButtonLogOut"  Style="{DynamicResource MenuButtonStyle}" Content="Выход" Click="ButtonLogOut_Click"/>
             </StackPanel>
         </StackPanel>
 
-        <Frame Name="MainFrame"
-                Grid.Column="1"
-               NavigationUIVisibility="Hidden"
-               Content="{Binding CurrentPage, Mode=OneWay}"/>
+        <Frame Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Mode=OneWay}"/>
     </Grid>
 </Window>

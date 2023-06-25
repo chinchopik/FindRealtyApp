@@ -29,17 +29,14 @@ namespace FindRealtyApp.Views
 
             DataGridView.ItemsSource = _clientRepository.GetAllClients();
         }
-
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             AddClientWindow addEditWindow = new AddClientWindow();
             addEditWindow.ShowDialog();
             DataGridView.ItemsSource = _clientRepository.GetAllClients();
         }
-
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {         
             if (MessageBox.Show("Вы точно хотите удалить этот элемент?", "Всплывающее окно", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
             {
                 try
@@ -57,7 +54,6 @@ namespace FindRealtyApp.Views
                 }
             }
         }
-
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             if (DataGridView.SelectedItem != null)
@@ -67,7 +63,6 @@ namespace FindRealtyApp.Views
                 DataGridView.ItemsSource = _clientRepository.GetAllClients();
             }
         }
-
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             DataGridView.ItemsSource = _clientRepository.GetAllClients().Where(p => p.LastName.ToLower().Contains(SearchBar.Text.ToLower())

@@ -55,3 +55,4 @@ D:\projects\FindRealtyApp\FindRealtyApp\FindRealtyApp\obj\Debug\Views\ReceiptWin
 D:\projects\FindRealtyApp\FindRealtyApp\FindRealtyApp\obj\Debug\Views\ReceiptWindow.baml
 D:\projects\FindRealtyApp\FindRealtyApp\FindRealtyApp\bin\Debug\Xceed.Document.NET.dll
 D:\projects\FindRealtyApp\FindRealtyApp\FindRealtyApp\bin\Debug\Xceed.Words.NET.dll
+D:\projects\FindRealtyApp\FindRealtyApp\FindRealtyApp\obj\Debug\FindRealtyApp.csproj.AssemblyReference.cache

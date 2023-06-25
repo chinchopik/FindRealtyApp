@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindRealtyApp.Models
 {
-    class Agent : Person
+    public class Agent : Person
     {
         public new int Id { get; set; }
         public new string FirstName { get; set; }
